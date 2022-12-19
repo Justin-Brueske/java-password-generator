@@ -22,6 +22,10 @@ let special = "!@#$%^&*()";
 function generatePassword() {
   let pwlength = window.prompt ("How many characters for your password (8-128)");
   console.log(pwlength);
+  if (pwlength < 8 || pwlength > 128) {
+    window.alert ("Your password length needs to be between 8 and 128");
+    // pwlength = window.prompt ("How many characters for your password (8-128)");
+   }else {
   let pwlower = window.confirm ("Would you like lowercase letters");
   console.log(pwlower);
   let pwupper = window.confirm ("Would you like uppercase letters");
@@ -49,8 +53,13 @@ function generatePassword() {
     pwstring = pwstring + special;
   }
   console.log(pwstring);
-  
   let result = "";
+
+  if (pwlower == false && pwupper == false && pwnumbers == false && pwspecial == false) {
+    window.alert ("You have not selcted any character sets please try again");
+  }
+  
+  
   let i = 0;
   do {
     // need to make a random string out of lower, upper, numbers, special
@@ -62,5 +71,6 @@ function generatePassword() {
   
   
   } while (i < pwlength);
-
+  return result;
+}
 }
